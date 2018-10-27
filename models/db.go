@@ -1,9 +1,11 @@
 package models
 
 import (
-	"github.com/jinzhu/gorm"
+	"fmt"
 	"log"
 	"os"
+
+	"github.com/jinzhu/gorm"
 )
 
 //数据库连接
@@ -18,6 +20,7 @@ func init() {
 		db.DB().SetMaxOpenConns(30)
 		DB = db
 	} else {
+		fmt.Println("数据库连接有误")
 		log.Fatal(err)
 		os.Exit(-1)
 	}
