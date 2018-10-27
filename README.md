@@ -1,1 +1,1 @@
-# skyline-api-go
+# skyline-api
