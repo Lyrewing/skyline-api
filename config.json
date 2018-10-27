@@ -1,0 +1,12 @@
+{
+
+    /*系统配置*/
+    "SiteName":"test",
+    "Env":"development",
+
+    /*Statd配置*/
+    "URL":"74.82.210.81:8125",
+    "Prefix":"api"
+
+
+}
