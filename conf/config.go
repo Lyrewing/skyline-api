@@ -9,10 +9,11 @@ import (
 )
 
 type config struct {
-	SiteName string
-	Env      string
-	URL      string
-	Prefix   string
+	SiteName      string
+	Env           string
+	URL           string
+	Prefix        string
+	ConnectString string
 }
 
 var AppSettings config

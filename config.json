@@ -1,12 +1,9 @@
 {
 
-    /*系统配置*/
     "SiteName":"test",
     "Env":"development",
-
-    /*Statd配置*/
     "URL":"74.82.210.81:8125",
-    "Prefix":"api"
-
+    "Prefix":"api",
+    "ConnectString":"root:1qaz2wsx@tcp(192.168.31.214:13306)/skyline_db?charset=utf8&parseTime=True"
 
 }
