@@ -13,6 +13,7 @@ install:
   - cd $GOPATH/src/skyline-api
   - govendor sync
   - pwd
+  - ls
   - ls ./vendor/github.com
 script:
   - go build
