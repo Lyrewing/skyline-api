@@ -7,10 +7,10 @@ services:
 go:
   - "1.10.x"
 before_install:
-  - docker info
-  - docker ps -a
   - go get -u -v github.com/kardianos/govendor
 install:
+  - cp -rf ./ $GOPATH/src/skyline-api
+  - cd $GOPATH/src/skyline-api
   - govendor sync
   - pwd
   - ls ./vendor/github.com
