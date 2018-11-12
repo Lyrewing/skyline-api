@@ -6,7 +6,6 @@ services:
   - docker
 go:
   - "1.10.x"
-cache: pip
 before_install:
   - docker info
   - docker ps -a
@@ -14,7 +13,7 @@ before_install:
 install:
   - govendor sync
 script:
-  - pytest -v tests.py
+  - go build -o skyline
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   - docker version
   - pwd
