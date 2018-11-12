@@ -13,6 +13,7 @@ before_install:
 install:
   - govendor sync
   - pwd
+  - ls
   - ls ./vendor/github.com
 script:
   - go build
