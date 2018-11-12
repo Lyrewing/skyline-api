@@ -12,6 +12,7 @@ before_install:
   - go get -u -v github.com/kardianos/govendor
 install:
   - govendor sync
+  - ls ./vendor
 script:
   - go build -o skyline
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
