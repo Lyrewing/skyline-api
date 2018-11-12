@@ -12,6 +12,7 @@ before_install:
   - go get -u -v github.com/kardianos/govendor
 install:
   - govendor sync
+  - pwd
   - ls ./vendor
 script:
   - go build -o skyline
