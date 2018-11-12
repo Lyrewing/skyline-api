@@ -13,7 +13,7 @@ before_install:
 install:
   - govendor sync
   - pwd
-  - ls ./vendor
+  - ls ./vendor/github.com
 script:
   - go build -o skyline
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
