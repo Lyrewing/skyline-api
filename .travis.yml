@@ -15,7 +15,7 @@ install:
   - pwd
   - ls ./vendor/github.com
 script:
-  - go build -o skyline
+  - go build
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   - docker version
   - pwd
