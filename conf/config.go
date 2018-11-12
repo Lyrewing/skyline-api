@@ -37,5 +37,13 @@ func init() {
 		fmt.Println("反序化失败")
 		os.Exit(-1)
 	}
+	if connectionStr := os.Getenv("MYSQL_DB_CONNECTION"); connectionStr != "" {
+		AppSettings.ConnectString = connectionStr
+	}
+	if statsdUrl:=os.Getenv("STATSD_URL");statsdUrl!=""{
+		AppSettings.URL = statsdUrl
+	}
+
+
 
 }

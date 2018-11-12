@@ -2,7 +2,7 @@
 
     "SiteName":"test",
     "Env":"development",
-    "URL":"74.82.210.81:8125",
+    "URL":"192.168.31.214:18125",
     "Prefix":"api",
     "ConnectString":"root:1qaz2wsx@tcp(192.168.31.214:13306)/skyline_db?charset=utf8&parseTime=True"
 
