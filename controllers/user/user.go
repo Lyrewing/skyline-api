@@ -9,7 +9,7 @@ import (
 )
 
 func List(context *gin.Context) {
-	users := make([]models.User, 2, 2)
+	users := []models.User{}
 	users = append(users, models.User{Age: 25, Name: "fengzhanyuan", Sex: 1, ID: 2})
 
 	randnum := utils.GenerateRandomNumber(10, 200)

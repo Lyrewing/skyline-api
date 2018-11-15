@@ -21,40 +21,56 @@ type UserRepository struct {
 	DbContext *gorm.DB
 }
 
+//创建实例
 func NewUserRepository() *UserRepository {
 	return &UserRepository{DbContext: DB}
 }
+
+//执行Sql语句
 func (r *UserRepository) Exec(sql string) bool {
 	return true
 }
 
-func (r *UserRepository) Create(user *models.User) bool {
-	return true
-}
-func (r *UserRepository) DeleteById(id uint) bool {
-	return true
+//创建user
+func (r *UserRepository) Create(user *models.User)  {
+	 r.DbContext.Create(user)
 }
 
+//删除通过Id
+func (r *UserRepository) DeleteById(id uint)  {
+	user:= &models.User{ID:id}
+	r.DbContext.Delete(user)
+}
+
+//查询By Id
 func (r *UserRepository) FindById(id uint) *models.User {
-	return &models.User{ID: 1, Name: "", Age: 12, Sex: 1}
+	user:= &models.User{}
+	r.DbContext.Where("id = ?",id).Find(user)
+	return user	
 }
 
 func (r *UserRepository) FindAll() *[]models.User {
 	users := []models.User{}
+	r.DbContext.Find(users)
 	return &users
 }
 
 func (r *UserRepository) QueryByStruct(user *models.User) *[]models.User {
-	users := []models.User{}
-	return &users
+	users := &[]models.User{}
+	r.DbContext.Where(user).Find(users)
+	return users
 }
 
 func (r *UserRepository) QueryByMap(queryMap map[string]interface{}) *[]models.User {
-	users := []models.User{}
-	return &users
+	users := &[]models.User{}
+	r.DbContext.Where(queryMap).Find(users)
+	return users
 }
 
-func (r *UserRepository) QueryPage(index uint, size uint) (*[]models.User, uint) {
-	users := []models.User{}
-	return &users, 100
+func (r *UserRepository) QueryPage(index uint, size uint) (*[]models.User ,uint) {
+	users := &[]models.User{}
+	var count uint
+	r.DbContext.Model(&models.User{}).Count(&count)
+	r.DbContext.Limit(size).Offset(size*(index-1)).Order("id desc").Find(users)
+	return users,count
 }
