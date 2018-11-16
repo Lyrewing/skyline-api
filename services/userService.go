@@ -27,7 +27,7 @@ func (s *UserService) Add(user *models.User) {
 	userRepository.Create(user)
 }
 
-func (s *UserService) GetUsers(index uint, size uint, users *[]models.User) int {
+func (s *UserService) GetUsers(index int, size int, users *[]models.User) int {
 	total := 0
 	users, total = userRepository.QueryPage(index, size)
 	return total

@@ -9,12 +9,12 @@ import (
 type IUserRepository interface {
 	Exec(sql string) bool
 	Create(user *models.User)
-	DeleteById(uint)
-	FindById(uint) *models.User
+	DeleteById(int)
+	FindById(int) *models.User
 	FindAll() *[]models.User
 	QueryByStruct(*models.User) *[]models.User
 	QueryByMap(queryMap map[string]interface{}) *[]models.User
-	QueryPage(index uint, size uint) (*[]models.User, int)
+	QueryPage(index int, size int) (*[]models.User, int)
 }
 
 type UserRepository struct {
@@ -37,13 +37,13 @@ func (r *UserRepository) Create(user *models.User) {
 }
 
 //删除通过Id
-func (r *UserRepository) DeleteById(id uint) {
+func (r *UserRepository) DeleteById(id int) {
 	user := &models.User{ID: id}
 	r.DbContext.Delete(user)
 }
 
 //查询By Id
-func (r *UserRepository) FindById(id uint) *models.User {
+func (r *UserRepository) FindById(id int) *models.User {
 	user := &models.User{}
 	r.DbContext.Where("id = ?", id).Find(user)
 	return user
@@ -67,7 +67,7 @@ func (r *UserRepository) QueryByMap(queryMap map[string]interface{}) *[]models.U
 	return users
 }
 
-func (r *UserRepository) QueryPage(index uint, size uint) (*[]models.User, int) {
+func (r *UserRepository) QueryPage(index int, size int) (*[]models.User, int) {
 	users := &[]models.User{}
 	var count int
 	r.DbContext.Model(&models.User{}).Count(&count)
