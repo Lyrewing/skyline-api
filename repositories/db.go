@@ -5,6 +5,7 @@ import (
 	"log"
 	"os"
 	"skyline-api/conf"
+	"skyline-api/models"
 
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/mysql"
@@ -20,6 +21,9 @@ func init() {
 		db.LogMode(true)
 		db.DB().SetMaxIdleConns(10)
 		db.DB().SetMaxOpenConns(30)
+		//自动迁移
+		db.AutoMigrate(&models.User{})
+
 		DB = db
 	} else {
 		fmt.Println("数据库连接有误")
