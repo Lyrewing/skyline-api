@@ -1,18 +1,18 @@
 package user
 
 import (
-	"skyline-api/models"
-	"skyline-api/utils"
-	"time"
-
 	"github.com/gin-gonic/gin"
+	"skyline-api/models"
+	"skyline-api/services"
 )
 
-func List(context *gin.Context) {
-	users := []models.User{}
-	users = append(users, models.User{Age: 25, Name: "fengzhanyuan", Sex: 1, ID: 2})
+var userService *services.UserService
 
-	randnum := utils.GenerateRandomNumber(10, 200)
-	time.Sleep(time.Millisecond * time.Duration(randnum))
+func init() {
+	userService = &services.UserService{}
+}
+func List(context *gin.Context) {
+	users := &[]models.User{}
+	userService.GetUsers(1, 10, users)
 	context.JSON(200, users)
 }

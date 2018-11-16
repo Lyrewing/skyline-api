@@ -14,7 +14,7 @@ type IUserRepository interface {
 	FindAll() *[]models.User
 	QueryByStruct(*models.User) *[]models.User
 	QueryByMap(queryMap map[string]interface{}) *[]models.User
-	QueryPage(index uint, size uint) (*[]models.User, uint)
+	QueryPage(index uint, size uint) (*[]models.User, int)
 }
 
 type UserRepository struct {
@@ -67,9 +67,9 @@ func (r *UserRepository) QueryByMap(queryMap map[string]interface{}) *[]models.U
 	return users
 }
 
-func (r *UserRepository) QueryPage(index uint, size uint) (*[]models.User, uint) {
+func (r *UserRepository) QueryPage(index uint, size uint) (*[]models.User, int) {
 	users := &[]models.User{}
-	var count uint
+	var count int
 	r.DbContext.Model(&models.User{}).Count(&count)
 	r.DbContext.Limit(size).Offset(size * (index - 1)).Order("id desc").Find(users)
 	return users, count
