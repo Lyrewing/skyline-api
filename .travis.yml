@@ -18,5 +18,5 @@ install:
 script:
   - go build -o skyline
   - ls
-  - docker build -t lyrewing/skyline-api:1.0 .
-  - docker push lyrewing/skyline-api:1.0
+  - docker build -t lyrewing/skyline-api:1.0.1 .
+  - docker push lyrewing/skyline-api:1.0.1
