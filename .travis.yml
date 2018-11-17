@@ -7,7 +7,7 @@ services:
 go:
   - "1.10.x"
 before_install:
-
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   - go get -u -v github.com/kardianos/govendor
 install:
   - cp -rf ./ $GOPATH/src/skyline-api
@@ -18,7 +18,5 @@ install:
 script:
   - go build -o skyline
   - ls
-  - docker version
-  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   - docker build -t lyrewing/skyline-api:1.0 .
   - docker push lyrewing/skyline-api:1.0
