@@ -11,7 +11,7 @@ ENV MYSQL_DB_CONNECTION root:123456@tcp(skyline-db:3306)/skyline?charset=utf8&pa
 ENV STATSD_URL skyline-telegraf:8125
 #设置工作目录
 WORKDIR /skyline-api
-RUN ls
+RUN [ -f /skyline-api/skyline ] && echo "file fount" || echo "file not found"
 #暴露端口
 EXPOSE 8080
 #最终运行docker的命令
