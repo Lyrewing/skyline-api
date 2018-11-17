@@ -32,7 +32,6 @@ func APIStatsD(context *gin.Context) {
 	//监控功能
 	//创建一个单利的对象
 	stastdClient = instance(stastdClient)
-
-	go stastdClient.Timing(apiName, duration)
+	stastdClient.Timing(apiName, duration)
 
 }
