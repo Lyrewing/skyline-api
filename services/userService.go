@@ -24,6 +24,7 @@ func (s *UserService) Login(email string, password string) bool {
 }
 
 func (s *UserService) Add(user *models.User) {
+	
 	userRepository.Create(user)
 }
 

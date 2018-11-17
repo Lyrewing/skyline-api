@@ -11,4 +11,5 @@ func Route(router *gin.Engine) {
 	apiPrefix := "api"
 	api := router.Group(apiPrefix, middleware.RefreshToken)
 	api.GET("/user/list", middleware.APIStatsD, user.List)
+	api.POST("/user/add",middleware.APIStatsD,user.Add)
 }
