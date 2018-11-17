@@ -1,10 +1,11 @@
 #源镜像
-FROM golang:1.10
+FROM golang:1.10-alpine3.8
 #作者
 MAINTAINER FengZhanyuan "iven.feng@outlook.com"
 #将服务器的go工程代码加入到docker容器中
 RUN ls
-ADD ./skyline $/skyline-api
+RUN  mkdir /skyline-api
+COPY skyline $/skyline-api/
 #设置环境变量
 ENV MYSQL_DB_CONNECTION root:123456@tcp(skyline-db:3306)/skyline?charset=utf8&parseTime=True
 ENV STATSD_URL skyline-telegraf:8125
