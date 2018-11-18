@@ -8,11 +8,11 @@ go:
   - "1.10.x"
 before_install:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - go get -u -v github.com/kardianos/govendor
+  - go get -u github.com/golang/dep/cmd/dep
 install:
   - cp -rf ./ $GOPATH/src/skyline-api
   - cd $GOPATH/src/skyline-api
-  - govendor sync
+  - dep ensure
   - pwd
   - ls
 script:
