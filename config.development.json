@@ -1,16 +1,13 @@
 {
-
     "SiteName":"test",
-    "Env":"${GOLANG_ENVIRONMENT}",
+    "Env":"Development",
     "URL":"192.168.31.207:18125",
     "Prefix":"api",
     "ConnectString":"root:123456@tcp(192.168.31.207:13306)/skyline?charset=utf8&parseTime=True",
-    "Register_Address":"${CONSUL_ADDRESS}",
+    "Register_Address":"${PATH|ree}",
     "Register_Service":"",
-    "Register_Tags":["${PATH}",""],
+    "Register_Tags":["${ssdde|ds}",""],
     "Register_Port":8080, 
     "Register_DeregisterCriticalServiceAfter":"60s",
     "Register_Interval":"10s"
-
-
 }
