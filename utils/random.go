@@ -23,14 +23,14 @@ func ConfigTemplateRender(source string) string {
 	println(len(strs))
 	source = reg.ReplaceAllStringFunc(source, func(src string) string {
 		default_src := ""
-		src = strings.Replace(src, " ", "", len(src)+1)
+		src = strings.TrimSpace(src)
 		src = strings.TrimPrefix(src, "${")
 		src = strings.TrimSuffix(src, "}")
 
 		if strings.Contains(src, "|") {
-			s:= strings.Split(src, "|")
-			default_src = s[1]
-			src = s[0]
+			s := strings.Split(src, "|")
+			default_src = strings.TrimSpace(s[1])
+			src = strings.TrimSpace(s[0])
 		}
 
 		temp, exist := os.LookupEnv(src)
