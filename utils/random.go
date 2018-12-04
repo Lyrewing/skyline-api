@@ -26,13 +26,11 @@ func ConfigTemplateRender(source string) string {
 		src = strings.TrimSpace(src)
 		src = strings.TrimPrefix(src, "${")
 		src = strings.TrimSuffix(src, "}")
-
 		if strings.Contains(src, "|") {
 			s := strings.Split(src, "|")
 			default_src = strings.TrimSpace(s[1])
 			src = strings.TrimSpace(s[0])
 		}
-
 		temp, exist := os.LookupEnv(src)
 		if !exist {
 			temp = default_src
