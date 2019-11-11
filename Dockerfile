@@ -18,3 +18,9 @@ RUN [ -f /skyline-api/config.json ] && echo "file fount" || echo "file not found
 EXPOSE 8080
 #最终运行docker的命令
 ENTRYPOINT  ["/skyline-api/skyline"]
+
+
+
+
+
+
